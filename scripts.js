@@ -1,7 +1,7 @@
 function initClient() {
     gapi.client.init({
         'apiKey': 'AIzaSyBqSNEYfzWtpEUSzBUPOtCnMN0R2OfCRgM',
-        'clientId': '',
+        'clientId': '178035218430-82fvdla2c1loq3drjt7sv3eu5ruk1cv5.apps.googleusercontent.com',
         'scope': 'https://www.googleapis.com/auth/spreadsheets',
         'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
     }).then(function () {
