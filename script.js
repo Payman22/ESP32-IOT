@@ -1,7 +1,7 @@
 function initClient() {
     gapi.client.init({
-        'apiKey': 'YOUR_API_KEY',
-        'clientId': 'YOUR_CLIENT_ID',
+        'apiKey': 'AIzaSyAkoryVtiY5zCVAYTlSquSmt578k4l46YI',
+        'clientId': '1050886216470-gpqrg654jt88mnkjuthdmll3t0p929k8.apps.googleusercontent.com',
         'scope': 'https://www.googleapis.com/auth/spreadsheets',
         'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
     }).then(function () {
@@ -23,7 +23,7 @@ function handleSignOutClick(event) {
 
 function readSheetData() {
     gapi.client.sheets.spreadsheets.values.get({
-        spreadsheetId: 'YOUR_SPREADSHEET_ID',
+        spreadsheetId: '1gzFiV8qYD5EW4fSPd1NUP2mj7h9q0-UMwNoxUagMLEU',
         range: 'Sheet1!A1:E10',
     }).then(function(response) {
         var range = response.result;
@@ -36,8 +36,8 @@ function readSheetData() {
 
 function writeSheetData(values) {
     var params = {
-        spreadsheetId: 'YOUR_SPREADSHEET_ID',
-        range: 'Sheet1!A1',
+        spreadsheetId: '1gzFiV8qYD5EW4fSPd1NUP2mj7h9q0-UMwNoxUagMLEU',
+        range: 'Sheet1!A11',
         valueInputOption: 'RAW',
     };
 
