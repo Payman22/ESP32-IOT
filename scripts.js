@@ -40,6 +40,19 @@ function writeSheetData(values) {
         range: 'Sheet1!A11',
         valueInputOption: 'RAW',
     };
+    
+     function successFunc(data) {
+      console.log(data);
+    }
+
+    function errorFunc(e) {
+      console.log(e);
+    }
+
+    // Use Sheetsu.read to get data from a spreadsheet.
+    // Pass callback function, which takes one argument - data
+    // It's triggered after getting data from API
+    Sheetsu.read("https://sheetsu.com/apis/v1.0/020b2c0f/", {}).then(successFunc, errorFunc);
 
     var valueRangeBody = {
         "values": values,
