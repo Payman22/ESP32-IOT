@@ -1,25 +1,11 @@
-.red-button {
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 10px;
-    cursor: pointer;
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
 }
 
-.green-button {
-    background-color: green;
-    color: white;
-    border: none;
+button {
+    margin: 5px;
     padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
     font-size: 16px;
-    margin: 10px;
     cursor: pointer;
 }
