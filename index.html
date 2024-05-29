@@ -2,29 +2,54 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Send Data to ESP32</title>
-    <script>
-        async function sendData() {
-            const data = document.getElementById('dataInput').value;
-            const response = await fetch('http://192.168.1.213/send-data', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: new URLSearchParams({ 'data': data }),
-            });
-
-            if (response.ok) {
-                alert('Data sent successfully!');
-            } else {
-                alert('Failed to send data');
-            }
-        }
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supabase Realtime Database Example</title>
 </head>
 <body>
-    <h1>Send Data to ESP32</h1>
-    <input type="text" id="dataInput" placeholder="Enter some data">
-    <button onclick="sendData()">Send Data</button>
+    <h1>Supabase Realtime Database Example</h1>
+    
+    <ul id="dataList">
+        <!-- Data will be displayed here -->
+    </ul>
+
+    <script>
+        // Replace these with your Supabase project details
+        const supabaseUrl = 'https://mvitvcjgujsbskzykayb.supabase.co';
+        const supabaseApiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im12aXR2Y2pndWpzYnNrenlrYXliIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTY5NzEyNjYsImV4cCI6MjAzMjU0NzI2Nn0.FEIEHdHjeMbV653cmPLWq2kmgdCmX5QYfvFKbdyi15s';
+
+        // Initialize Supabase client
+        const { createClient } = supabase;
+        const supabase = createClient(supabaseUrl, supabaseApiKey);
+
+        // Function to fetch data from Supabase table
+        async function fetchData() {
+            try {
+                const { data, error } = await supabase
+                    .from('table1')
+                    .select('*'); // Replace 'your_table_name' with your actual table name
+
+                if (error) {
+                    console.error('Error fetching data:', error.message);
+                    return;
+                }
+
+                // Clear existing data
+                const dataList = document.getElementById('dataList');
+                dataList.innerHTML = '';
+
+                // Display fetched data
+                data.forEach(item => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = JSON.stringify(item);
+                    dataList.appendChild(listItem);
+                });
+            } catch (error) {
+                console.error('Error fetching data:', error.message);
+            }
+        }
+
+        // Fetch data when the page loads
+        window.onload = fetchData;
+    </script>
 </body>
 </html>
