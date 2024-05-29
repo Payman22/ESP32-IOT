@@ -25,7 +25,7 @@
         async function fetchData() {
             try {
                 const { data, error } = await supabase
-                    .from('table1')
+                    .from('public.table1')
                     .select('*'); // Replace 'your_table_name' with your actual table name
 
                 if (error) {
