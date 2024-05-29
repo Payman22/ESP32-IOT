@@ -2,13 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Google Sheets API Example</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://apis.google.com/js/api.js"></script>
-    <script src="scripts.js" defer></script>
+    <title>Simple LocalStorage Example</title>
+    <script>
+        function saveData() {
+            const data = document.getElementById('dataInput').value;
+            localStorage.setItem('myData', data);
+            alert('Data saved!');
+        }
+
+        function loadData() {
+            const data = localStorage.getItem('myData');
+            document.getElementById('displayData').innerText = data || 'No data found.';
+        }
+    </script>
 </head>
-<body>
-    <button onclick="readSheetData()">Read Data</button>
-    <div id="output"></div>
+<body onload="loadData()">
+    <h1>Simple LocalStorage Example</h1>
+    <input type="text" id="dataInput" placeholder="Enter some data">
+    <button onclick="saveData()">Save Data</button>
+    <p id="displayData">No data found.</p>
 </body>
 </html>
