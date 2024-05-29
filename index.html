@@ -2,24 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Simple LocalStorage Example</title>
+    <title>Send Data to ESP32</title>
     <script>
-        function saveData() {
+        async function sendData() {
             const data = document.getElementById('dataInput').value;
-            localStorage.setItem('myData', data);
-            alert('Data saved!');
-        }
+            const response = await fetch('http://<192.168.1.213>/send-data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({ 'data': data }),
+            });
 
-        function loadData() {
-            const data = localStorage.getItem('myData');
-            document.getElementById('displayData').innerText = data || 'No data found.';
+            if (response.ok) {
+                alert('Data sent successfully!');
+            } else {
+                alert('Failed to send data');
+            }
         }
     </script>
 </head>
-<body onload="loadData()">
-    <h1>Simple LocalStorage Example</h1>
+<body>
+    <h1>Send Data to ESP32</h1>
     <input type="text" id="dataInput" placeholder="Enter some data">
-    <button onclick="saveData()">Save Data</button>
-    <p id="displayData">No data found.</p>
+    <button onclick="sendData()">Send Data</button>
 </body>
 </html>
