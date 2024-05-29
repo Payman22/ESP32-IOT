@@ -6,7 +6,7 @@
     <script>
         async function sendData() {
             const data = document.getElementById('dataInput').value;
-            const response = await fetch('http://<192.168.1.213>/send-data', {
+            const response = await fetch('http://192.168.1.213/send-data', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
