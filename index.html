@@ -1,55 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supabase Realtime Database Example</title>
-</head>
-<body>
-    <h1>Supabase Realtime Database Example</h1>
-    
-    <ul id="dataList">
-        <!-- Data will be displayed here -->
-    </ul>
-
-    <script>
-        // Replace these with your Supabase project details
-        const supabaseUrl = 'https://mvitvcjgujsbskzykayb.supabase.co';
-        const supabaseApiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im12aXR2Y2pndWpzYnNrenlrYXliIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTY5NzEyNjYsImV4cCI6MjAzMjU0NzI2Nn0.FEIEHdHjeMbV653cmPLWq2kmgdCmX5QYfvFKbdyi15s';
-
-        // Initialize Supabase client
-        const { createClient } = supabase;
-        const supabase = createClient(supabaseUrl, supabaseApiKey);
-
-        // Function to fetch data from Supabase table
-        async function fetchData() {
-            try {
-                const { data, error } = await supabase
-                    .from('public.table1')
-                    .select('*'); // Replace 'your_table_name' with your actual table name
-
-                if (error) {
-                    console.error('Error fetching data:', error.message);
-                    return;
-                }
-
-                // Clear existing data
-                const dataList = document.getElementById('dataList');
-                dataList.innerHTML = '';
-
-                // Display fetched data
-                data.forEach(item => {
-                    const listItem = document.createElement('li');
-                    listItem.textContent = JSON.stringify(item);
-                    dataList.appendChild(listItem);
-                });
-            } catch (error) {
-                console.error('Error fetching data:', error.message);
-            }
-        }
-
-        // Fetch data when the page loads
-        window.onload = fetchData;
+<html>
+  <head>
+    <!-- Loading datatables, a JS library from the CDN -->
+    <script src="<https://code.jquery.com/jquery-3.5.1.js>"></script>
+    <link rel="stylesheet" type="text/css" href="<https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css>">
+    <script type="text/javascript" charset="utf8" src="<https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js>">
     </script>
-</body>
+
+    
+    <script>
+      /*
+      * The line below invokes the getData() function in the Code.gs file, 
+      * It passes the returned data to showData() function
+      */
+      google.script.run.withSuccessHandler(showData).getData();
+    
+      // This function leverages the JS datatables lib to render our table to the DOM
+      // using the data the function receives
+      function showData(dataArray){
+        console.log()
+        $(document).ready(function(){
+          $('#table-data').DataTable({
+            data: dataArray,
+
+            columns: [
+              {"title":"First Name"},
+              {"title":"Last Name"}
+            ]
+          });
+        });
+      }      
+    </script>
+  </head>
+ 
+  <body>
+    <div>
+      <table id="table-data">
+          <!-- showData() function defined above would inject table data here -->
+      </table>
+    </div>
+  </body>
 </html>
