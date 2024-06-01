@@ -260,7 +260,7 @@ function submitData() {
 
     // Initialize the JS client
 import { createClient } from '@supabase/supabase-js'
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+const supabase = createClient('https://mvitvcjgujsbskzykayb.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im12aXR2Y2pndWpzYnNrenlrYXliIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTY5NzEyNjYsImV4cCI6MjAzMjU0NzI2Nn0.FEIEHdHjeMbV653cmPLWq2kmgdCmX5QYfvFKbdyi15s')
 
 // Create a function to handle inserts
 const handleInserts = (payload) => {
