@@ -269,8 +269,8 @@ const handleInserts = (payload) => {
 
 // Listen to inserts
 supabase
-  .channel('todos')
-  .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'todos' }, handleInserts)
+  .channel('table1')
+  .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'table1' }, handleInserts)
   .subscribe()
 
 
