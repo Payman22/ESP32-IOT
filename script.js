@@ -6,7 +6,7 @@ const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 // Function to fetch data from Supabase
 async function fetchData() {
     const { data, error } = await supabase
-        .from('your_table_name')
+        .from('mytable1')
         .select('*');
 
     if (error) {
