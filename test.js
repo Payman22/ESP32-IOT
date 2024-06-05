@@ -1,6 +1,6 @@
 const {google} = require('googleapis');
 
-const serviceAccountKeyFile = "./arcane-force-342206-e7736d717b0b.json";
+const serviceAccountKeyFile = "./espgsheet.json";
 const sheetId = '1gzFiV8qYD5EW4fSPd1NUP2mj7h9q0-UMwNoxUagMLEU'
 const tabName = 'sheet1'
 const range = 'A:E'
