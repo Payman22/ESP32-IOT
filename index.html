@@ -1,14 +1,57 @@
-<h1>RESULT</h1>
-<div id="result"></div>
-<script>
-   const onSuccess = data => {
-     const result = document.getElementById('result')
-     const userArr = JSON.parse(data).data
-     userArr.forEach(user=>{
-       result.innerHTML += `<div>${user.join(" ")}</div>`
-     })
-   }
-   google.script.run
-     .withSuccessHandler(onSuccess)
-     .fetchData()
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Numbers Table</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Random Numbers Table</h1>
+    <table>
+        <tr>
+            <th>Column 1</th>
+            <th>Column 2</th>
+            <th>Column 3</th>
+            <th>Column 4</th>
+        </tr>
+        <tr>
+            <td>42</td>
+            <td>76</td>
+            <td>58</td>
+            <td>91</td>
+        </tr>
+        <tr>
+            <td>35</td>
+            <td>67</td>
+            <td>88</td>
+            <td>23</td>
+        </tr>
+        <tr>
+            <td>54</td>
+            <td>31</td>
+            <td>75</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <td>99</td>
+            <td>47</td>
+            <td>62</td>
+            <td>85</td>
+        </tr>
+    </table>
+</body>
+</html>
