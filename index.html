@@ -1,17 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supabase Table Monitor</title>
-</head>
-<body>
-    <h1>Supabase Table Data</h1>
-    <div id="data"></div>
-
-    <!-- Include Supabase client library -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.29.4/dist/umd/supabase.min.js"></script>
-    <!-- Include main.js -->
-    <script src="script.js"></script>
-</body>
-</html>
+<h1>RESULT</h1>
+<div id="result"></div>
+<script>
+   const onSuccess = data => {
+     const result = document.getElementById('result')
+     const userArr = JSON.parse(data).data
+     userArr.forEach(user=>{
+       result.innerHTML += `<div>${user.join(" ")}</div>`
+     })
+   }
+   google.script.run
+     .withSuccessHandler(onSuccess)
+     .fetchData()
+</script>
